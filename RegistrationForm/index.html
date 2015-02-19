@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script src="modernizr.min.js"></script>
+</head>
+<body>
+<header>
+  <div id="header" align="center" style="background-color:red">
+<h1 style="margin-top:0; font-family:Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', serif">Registration</h1></div>
+
+  </header>
+  <body>
+  
+  
+  <form method="POST" action="..." onsubmit="return checkForm(this);">
+  
+  <div><label for="Firstname">Firstname</label>
+				<input type="text" placeholder="firstname" required="" name="Firstname" id="firstname" />
+			</div><br>
+<div><label for="Lastname">Lastname</label>
+				<input type="text" placeholder="lastname" required="" name="Lastname" id="lastname" />
+			</div><br>
+  
+  
+  
+  <div><label for="Emailid">EmailID</label>
+				<input type="email" id="email" name="email" placeholder="abc@xyz.com"  style="width: 140px;" required/>
+			</div><br>
+                </p>
+<label for="pass">Password</label><input type="password" name="pwd1"  id="pwd1" onkeyup="passwordStrength(this.value)" />
+             
+             <abbr title="password should contain atleast 3 capital letters, 2 small letters and 2 special characters and should not exceed 24 characters"><img src="help.png" style="width: 18px;"/></abbr><label for="passwordStrength">Password strength</label>
+             
+             <span id="passwordDescription">Password not entered</span> <br>
+            <span id="passwordStrength"  style="margin-left: 350px;class="strength0"  ></span> 
+                  <br>  
+              <p>
+  <label for="pass2">Confirm Password</label><input type="password"   id="pwd2" name="pwd2" />
+                </p>
+
+                
+               
+                 D.O.B
+  <input type="date" name="bday1"  id="date" min="2000-01-02"><br><br>
+  Local D.O.B
+  <input type="datetime-local" name="bdaytime" id="datetime-local"><br>
+  <br>
+  SSN: <input type="text"  id="SSN" pattern="(\d{3}([\-]\d{2}([\-]\d{4})))" placeholder="721-07-4426"><br><br>
+  Phone: <input type="text" id="phone" pattern='[\+]1[\-]\d{3}[\-]\d{3}[\-]\d{4}'"  placeholder="+1-408-507-7748" ><br><br>
+   <br><br>
+  <br>
+  <input type="submit" value="Create" formaction="page2.html">
+<input type="reset" value= "Cancel">
+  </form>
+  <script>
+  var online = navigator.onLine;
+
+  if (online == false) {
+
+      alert("Sorry, we currently do not have Internet access.");
+      location.reload();
+
+  }
+  else
+  {
+	  alert("Online");
+	  }
+  </script>
+ <script>
+// Check browser support
+if (typeof(Storage) != "undefined") {
+    // Store
+    var username  = document.getElementById("username").value;
+    localStorage.setItem("lastname", "username");
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("username");
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+ <script type="text/javascript">
+  function save()
+  {
+	  var input = document.getElementById("firstname");
+	  localStorage.setItem("firstname", input.value);
+	  var input = document.getElementById("lastname");
+	  localStorage.setItem("lastname", input.value);
+	  var input = document.getElementById("email");
+	  localStorage.setItem("email", input.value);
+	  var input = document.getElementById("date");
+	  localStorage.setItem("date", input.value);
+	  var input = document.getElementById("datetime");
+	  localStorage.setItem("datetime", input.value);
+	  var input = document.getElementById("datetime-local");
+	  localStorage.setItem("datetime-local", input.value);
+	  var input = document.getElementById("phone");
+	  localStorage.setItem("phone", input.value);
+	  }
+  </script>
+ <script type="text/javascript">
+ if (Modernizr.localstorage) {
+	  // window.localStorage is available!
+	  alert("Supported");
+	} else {
+		 alert(" Not Supported");
+	}
+	 
+	</script> 
+	<style type="text/css">
+#passwordStrength
+
+{
+
+        height:10px;
+
+        display:block;
+
+        float:left;
+
+}
+
+
+
+.strength0
+
+{
+
+        width:250px;
+
+        background:#cccccc;
+
+}
+
+
+
+.strength1
+
+{
+
+        width:50px;
+
+        background:#399800;
+
+}
+
+
+
+.strength2
+
+{
+
+        width:100px;    
+
+        background:#399800;
+
+}
+
+
+
+.strength3
+
+{
+
+        width:150px;
+
+        background:#399800;
+
+}
+
+
+
+.strength4
+
+{
+
+        background:#399800;
+
+        width:200px;
+
+}
+
+
+
+.strength5
+
+{
+
+        background:#399800;
+
+        width:250px;
+
+}
+</style>
+
+<script type="text/javascript">
+
+function passwordStrength(password)
+{
+        var desc = new Array();
+        desc[0] = "Very Weak";
+        desc[1] = "Weak";
+        desc[2] = "Better";
+        desc[3] = "Good";
+        desc[4] = "Strong";
+        var score   = 0;
+
+        //if password bigger than 6 give 1 point
+
+        if (password.length > 6) score++;
+
+        //if password has both lower and uppercase characters give 1 point
+
+        if ( ( password.match(/[a-z]/) ) && ( password.match(/[A-Z]/) ) ) score++;
+
+        //if password has at least one number give 1 point
+
+        if (password.match(/d+/)) score++;
+
+        //if password has at least one special caracther give 1 point
+
+        if ( password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/) ) score++;
+
+         document.getElementById("passwordDescription").innerHTML = desc[score];
+         document.getElementById("passwordStrength").className = "strength" + score;
+}
+</script>
+<script type="text/javascript">
+
+  function checkPassword(str)
+  {
+    var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    return re.test(str);
+  }
+
+  function checkForm(form)
+  {
+    if(form.firstname.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+    
+    
+
+    re = /^\w+$/;
+    if(!re.test(form.firstname.value)) {
+      alert("Error: Username must contain only letters, numbers and underscores!");
+      form.username.focus();
+      return false;
+    }
+    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+      if(!checkPassword(form.pwd1.value)) {
+        alert("The password you have entered is not valid!");
+        form.pwd1.focus();
+        return false;
+      }
+    } else {
+      alert("Error: Password and confirm Passord do not match !");
+      form.pwd1.focus();
+      return false;
+    }
+    return true;
+  }
+
+</script>
+
+
+</body>
+</html>

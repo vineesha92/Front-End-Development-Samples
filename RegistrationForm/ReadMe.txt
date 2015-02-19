@@ -1,0 +1,1 @@
+Registration Form is a small implementation of JS, HTML and CSS concepts.This index.html page contains a Registration Form with few javascript concepts implemented in it for form validations. Please try to enter the values according to the format of text displayed as default.

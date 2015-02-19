@@ -1,0 +1,1 @@
+This is a static webpage implemented using HTML, Bootstrap and CSS concepts. There is nothing regarding Javascript in this implementation.  
